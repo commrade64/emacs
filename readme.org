@@ -1,1 +1,2 @@
-# emacs
+#+TITLE: emacs
+#+AUTHOR: Sviatoslav Liashenko
