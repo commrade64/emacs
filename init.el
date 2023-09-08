@@ -207,6 +207,25 @@
 (custom/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
+;; projectile
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  (when (file-directory-p "~/projects/code")
+    (setq projectile-project-search-path '("~/projects/code")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+;; magit
+(use-package magit
+  :custom
+  (magit-display-buffer-function #'magit-display-same-window-except-diff-v1))
+
 ;;; IDK what this is, but Emacs generated it automagically
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -214,7 +233,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(hydra evil-collection evil general doom-themes helpful counsel which-key rainbow-delimiters ivy-rich doom-modeline)))
+   '(evil-magit magit counsel-projectile projectile hydra evil-collection evil general doom-themes helpful counsel which-key rainbow-delimiters ivy-rich doom-modeline)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
